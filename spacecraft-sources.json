@@ -1,0 +1,563 @@
+{
+ "spacecraft": {
+  "voyager-1": {
+   "horizonsId": -31,
+   "horizonsRange": {
+    "start": "1977-09-05T13:59Z",
+    "stop": "2100-01-01",
+    "note": "Extrapolated from a 2022 refit of tracking data that ends in 1992; no new tracking since 1992 (Horizons header)."
+   },
+   "group": "outer",
+   "nasa": {
+    "newsFeed": "https://science.nasa.gov/feed/?cat=3192",
+    "photojournalCategory": 3192
+   }
+  },
+  "voyager-2": {
+   "horizonsId": -32,
+   "horizonsRange": {
+    "start": "1977-08-20T15:32Z",
+    "stop": "2100-01-01",
+    "note": "Extrapolated from a 2022 refit of tracking data that ends in 1992 (Horizons header)."
+   },
+   "group": "outer",
+   "nasa": {
+    "newsFeed": "https://science.nasa.gov/feed/?cat=3193",
+    "photojournalCategory": 3193
+   }
+  },
+  "new-horizons": {
+   "horizonsId": -98,
+   "horizonsRange": {
+    "start": "2006-01-19T19:51Z",
+    "stop": "2050-01-01",
+    "note": "Tracking data cut-off 2026-07-20, prediction thereafter."
+   },
+   "group": "outer",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/new-horizons/feed/",
+    "photojournalCategory": 1369
+   }
+  },
+  "parker-solar-probe": {
+   "horizonsId": -96,
+   "horizonsRange": {
+    "start": "2018-08-12T08:16Z",
+    "stop": "2030-01-01",
+    "note": "Fit to tracking through 2026-09-01, reference planning trajectory after."
+   },
+   "group": "sun",
+   "nasa": {
+    "newsFeed": "https://science.nasa.gov/blogs/parker-solar-probe/feed/",
+    "photojournalCategory": null
+   }
+  },
+  "jwst": {
+   "horizonsId": -170,
+   "horizonsRange": {
+    "start": "2021-12-25T13:01Z",
+    "stop": "2031-10-04",
+    "note": "Definitive ephemeris to 2026-10-05, 28-day prediction, then 5-year schedule."
+   },
+   "group": "telescopes",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/webb/feed/",
+    "photojournalCategory": 2881
+   }
+  },
+  "juno": {
+   "horizonsId": -61,
+   "horizonsRange": {
+    "start": "2011-08-05T17:19Z",
+    "stop": "2028-09-02",
+    "note": "Reconstructed to 2026-08-24; planning prediction after 2026-09-23."
+   },
+   "group": "planets",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/juno/feed/",
+    "photojournalCategory": 1314
+   }
+  },
+  "europa-clipper": {
+   "horizonsId": -159,
+   "horizonsRange": {
+    "start": "2024-10-14T16:15Z",
+    "stop": "2034-09-03",
+    "note": "Tracking through 2026-09-22, predicted after."
+   },
+   "group": "planets",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/europa-clipper/feed/",
+    "photojournalCategory": 1111
+   }
+  },
+  "psyche": {
+   "horizonsId": -255,
+   "horizonsRange": {
+    "start": "2023-10-13T15:22Z",
+    "stop": "2029-02-11",
+    "note": "Data through 2026-08-11, prediction after. Ends before arrival at the asteroid."
+   },
+   "group": "smallbodies",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/psyche-mission/feed/",
+    "photojournalCategory": 2958
+   }
+  },
+  "lucy": {
+   "horizonsId": -49,
+   "horizonsRange": {
+    "start": "2021-10-16T10:33Z",
+    "stop": "2033-04-02",
+    "note": "Data fit through 2025-09-08, prediction after (header revised Oct 2025)."
+   },
+   "group": "smallbodies",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/lucy/feed/",
+    "photojournalCategory": 2896
+   }
+  },
+  "bepicolombo": {
+   "horizonsId": -121,
+   "horizonsRange": {
+    "start": "2018-10-20T02:13Z",
+    "stop": "2027-04-10",
+    "note": "ESA trajectory (MPO); fit through 2026-09-28, prediction after."
+   },
+   "group": "planets",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/bepicolombo/feed/",
+    "photojournalCategory": 2670
+   }
+  },
+  "juice": {
+   "horizonsId": -28,
+   "horizonsRange": {
+    "start": "2023-04-14T12:43Z",
+    "stop": "2031-07-21",
+    "note": "ESA trajectory; tracking through 2026-09-22, prediction after. Ends at Jupiter arrival."
+   },
+   "group": "planets",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/juice/feed/",
+    "photojournalCategory": 2887
+   }
+  },
+  "solar-orbiter": {
+   "horizonsId": -144,
+   "horizonsRange": {
+    "start": "2020-02-10T04:56Z",
+    "stop": "2030-11-20",
+    "note": "ESA trajectory; tracking fit to 2026-09-17, prediction after."
+   },
+   "group": "sun",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/solar-orbiter/feed/",
+    "photojournalCategory": 2998
+   }
+  },
+  "osiris-apex": {
+   "horizonsId": -64,
+   "horizonsRange": {
+    "start": "2016-09-08T23:06Z",
+    "stop": "2030-03-22",
+    "note": "Horizons still names it OSIRIS-REx; header last revised 2025-09-18."
+   },
+   "group": "smallbodies",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/osiris-apex/feed/",
+    "photojournalCategory": 6097
+   }
+  },
+  "hera": {
+   "horizonsId": -91,
+   "horizonsRange": {
+    "start": "2024-10-07T16:10Z",
+    "stop": "2026-11-04",
+    "note": "Trajectory file ends 2026-11-04; tracking-based to 2026-09-28. Needs refresh before arrival."
+   },
+   "group": "smallbodies",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": null
+   }
+  },
+  "pioneer-10": {
+   "horizonsId": -23,
+   "horizonsRange": {
+    "start": "1972-03-03T02:04Z",
+    "stop": "2050-01-01",
+    "note": "Historical navigation files (DE118 era); Horizons warns to use cautiously. Mission ended; position is a coast extrapolation."
+   },
+   "group": "outer",
+   "nasa": {
+    "newsFeed": "https://science.nasa.gov/feed/?cat=2944",
+    "photojournalCategory": 2944
+   }
+  },
+  "pioneer-11": {
+   "horizonsId": -24,
+   "horizonsRange": {
+    "start": "1973-04-06T02:25Z",
+    "stop": "2050-01-01",
+    "note": "Historical navigation files (DE118 era); Horizons warns to use cautiously. Mission ended; position is a coast extrapolation."
+   },
+   "group": "outer",
+   "nasa": {
+    "newsFeed": "https://science.nasa.gov/feed/?cat=2945",
+    "photojournalCategory": 2945
+   }
+  },
+  "mars-express": {
+   "horizonsId": -41,
+   "horizonsRange": {
+    "start": "2003-06-02T19:12Z",
+    "stop": "2033-01-01",
+    "note": "ESA trajectory. Reconstructed from tracking through 2026-09-23, prediction after (Horizons header)."
+   },
+   "group": "mars",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/mars-express/feed/",
+    "photojournalCategory": 2919
+   }
+  },
+  "exomars-tgo": {
+   "horizonsId": -143,
+   "horizonsRange": {
+    "start": "2016-03-14T08:14Z",
+    "stop": "2039-01-04",
+    "note": "ESA trajectory. Fit to data through 2025-06-21, then a long-term reference prediction (header revised Jan 2026). Positions after mid-2025 are approximate."
+   },
+   "group": "mars",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": 1112
+   }
+  },
+  "hope": {
+   "horizonsId": -62,
+   "horizonsRange": {
+    "start": "2020-07-19T23:06Z",
+    "stop": "2027-03-04",
+    "note": "Fit to tracking through 2026-09-03, predicted after. The header's file table misprints the end year as 2026."
+   },
+   "group": "mars",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": null
+   }
+  },
+  "escapade-blue": {
+   "horizonsId": -9,
+   "horizonsRange": {
+    "start": "2025-11-13T21:30Z",
+    "stop": "2027-09-12",
+    "note": "UC Berkeley SSL trajectory. Tracking through 2026-10-07, long-term prediction after. Ends around Mars arrival (Horizons header)."
+   },
+   "group": "mars",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/escapade/feed/",
+    "photojournalCategory": null
+   }
+  },
+  "escapade-gold": {
+   "horizonsId": -10,
+   "horizonsRange": {
+    "start": "2025-11-13T21:30Z",
+    "stop": "2027-09-10",
+    "note": "UC Berkeley SSL trajectory. Tracking through 2026-10-07, long-term prediction after. Ends around Mars arrival (Horizons header)."
+   },
+   "group": "mars",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/escapade/feed/",
+    "photojournalCategory": null
+   }
+  },
+  "lro": {
+   "horizonsId": -85,
+   "horizonsRange": {
+    "start": "2009-06-18T22:17Z",
+    "stop": "2028-04-17",
+    "note": "Reconstructed (PDS) to 2026-06-15, tag-up solutions to 2026-10-06, a 558-day prediction after (Horizons header revised 2026-10-07)."
+   },
+   "group": "moon",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/lro/feed/",
+    "photojournalCategory": 2902
+   }
+  },
+  "danuri": {
+   "horizonsId": -155,
+   "horizonsRange": {
+    "start": "2022-08-04T23:51Z",
+    "stop": "2027-05-06",
+    "note": "KARI trajectory solutions with tracking through 2026-10-11, merged with a longer-term prediction (Horizons header revised 2026-10-12)."
+   },
+   "group": "moon",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": null
+   }
+  },
+  "stereo-a": {
+   "horizonsId": -234,
+   "horizonsRange": {
+    "start": "2006-10-26T00:01Z",
+    "stop": "2027-01-15",
+    "note": "Fit to tracking data through 2026-09-16, then a 3-4 month planning prediction (Horizons header revised 2026-09-30). Needs refresh in January 2027."
+   },
+   "group": "sun",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/stereo/feed/",
+    "photojournalCategory": null
+   }
+  },
+  "hayabusa2": {
+   "horizonsId": -37,
+   "horizonsRange": {
+    "start": "2014-12-03T06:14Z",
+    "stop": "2027-01-01",
+    "note": "JAXA navigation, tag-up fit to tracking through 2026-09-29, prediction after (Horizons header revised 2026-09-30). File ends 2027-01-01, needs refresh."
+   },
+   "group": "smallbodies",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": null
+   }
+  },
+  "tesla-roadster": {
+   "horizonsId": -143205,
+   "horizonsRange": {
+    "start": "2018-02-07T03:00Z",
+    "stop": "2090-01-02",
+    "note": "JPL solution #11, fit to 374 ground-based optical observations from 8 February to 19 March 2018 (Horizons header revised 2025-01-03). No tracking since, so long-term errors may grow."
+   },
+   "group": "other",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": null
+   }
+  },
+  "mars-reconnaissance-orbiter": {
+   "horizonsId": -74,
+   "horizonsRange": {
+    "start": "2005-08-12T12:41Z",
+    "stop": "2026-10-27",
+    "note": "JPL navigation. Reconstructed to 2026-09-27, planning prediction after. Horizons extends this trajectory about monthly."
+   },
+   "group": "mars",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/mars-reconnaissance-orbiter/feed/",
+    "photojournalCategory": 2924
+   }
+  },
+  "mars-odyssey": {
+   "horizonsId": -53,
+   "horizonsRange": {
+    "start": "2001-04-07T16:25Z",
+    "stop": "2026-12-28",
+    "note": "JPL navigation. Fit to data through 2026-09-23, prediction after. Horizons extends this trajectory about monthly."
+   },
+   "group": "mars",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/odyssey/feed/",
+    "photojournalCategory": 2921
+   }
+  },
+  "chandrayaan-2": {
+   "horizonsId": -152,
+   "horizonsRange": {
+    "start": "2019-07-22T09:30Z",
+    "stop": "2026-11-08",
+    "note": "ISRO orbit solutions. Fit to tracking through 2026-09-29, prediction after. Horizons extends this trajectory about monthly."
+   },
+   "group": "moon",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": null
+   }
+  },
+  "aditya-l1": {
+   "horizonsId": -156,
+   "horizonsRange": {
+    "start": "2023-09-02T07:25Z",
+    "stop": "2027-01-21",
+    "note": "ISRO trajectory. Fit to tracking through 2026-09-27, planning prediction after. File ends 2027-01-21 and needs a refresh then."
+   },
+   "group": "sun",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": null
+   }
+  },
+  "swfo-l1": {
+   "horizonsId": -231,
+   "horizonsRange": {
+    "start": "2025-09-24T13:04Z",
+    "stop": "2028-02-25",
+    "note": "Weekly tag-up predictions with tracking through 2026-09-28, long-term prediction after."
+   },
+   "group": "spaceweather",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": null
+   }
+  },
+  "carruthers": {
+   "horizonsId": -171,
+   "horizonsRange": {
+    "start": "2025-09-24T13:11Z",
+    "stop": "2028-03-19",
+    "note": "UC Berkeley SSL trajectory. Tracking through 2026-09-23, prediction after."
+   },
+   "group": "spaceweather",
+   "nasa": {
+    "newsFeed": "https://science.nasa.gov/blogs/carruthers-geocorona-observatory/feed/",
+    "photojournalCategory": 3935
+   }
+  },
+  "euclid": {
+   "horizonsId": -680,
+   "horizonsRange": {
+    "start": "2023-07-01",
+    "stop": "2031-10-05",
+    "note": "ESA trajectory. Tracking-based through 2026-08-31, prediction after."
+   },
+   "group": "telescopes",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/euclid/feed/",
+    "photojournalCategory": 2696
+   }
+  },
+  "gaia": {
+   "horizonsId": -139479,
+   "horizonsRange": {
+    "start": "2013-12-19",
+    "stop": "2125-03-28",
+    "note": "Final ESOC reconstruction to the end of the mission on 2025-03-28, then a 100-year coast prediction (header revised May 2025)."
+   },
+   "group": "telescopes",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": 3964
+   }
+  },
+  "tess": {
+   "horizonsId": -95,
+   "horizonsRange": {
+    "start": "2018-04-18T23:37Z",
+    "stop": "2028-03-29",
+    "note": "Concatenated short tag-up predictions. Tracking through 2026-09-27, prediction after."
+   },
+   "group": "telescopes",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/tess/feed/",
+    "photojournalCategory": 1627
+   }
+  },
+  "roman": {
+   "horizonsId": -211,
+   "horizonsRange": {
+    "start": "2026-08-30T12:00Z",
+    "stop": "2028-10-04",
+    "note": "GSFC trajectory of 2026-10-05. Tracking to 2026-10-04, long-term prediction after."
+   },
+   "group": "telescopes",
+   "nasa": {
+    "newsFeed": "https://science.nasa.gov/blogs/roman/feed/",
+    "photojournalCategory": 1365
+   }
+  },
+  "smile": {
+   "horizonsId": -463,
+   "horizonsRange": {
+    "start": "2026-06-22",
+    "stop": "2029-06-30",
+    "note": "ESA trajectory from 2026-06-22, after orbit raising. Fit through 2026-08-05, prediction after. Horizons says further updates are not certain."
+   },
+   "group": "spaceweather",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": null
+   }
+  },
+  "chandra": {
+   "horizonsId": -151,
+   "horizonsRange": {
+    "start": "1999-08-07",
+    "stop": "2027-03-30",
+    "note": "Smithsonian (CfA) trajectory, prediction after 2026-10-01. File ends 2027-03-30 and needs a refresh then."
+   },
+   "group": "telescopes",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/chandra/feed/",
+    "photojournalCategory": 1088
+   }
+  },
+  "soho": {
+   "horizonsId": -21,
+   "horizonsRange": {
+    "start": "1995-12-02",
+    "stop": "2026-11-02",
+    "note": "GSFC trajectory files, prediction after 2026-08-26. The 1998-08-19 to 1998-09-25 gap is a ballistic fill. Horizons rolls this trajectory forward regularly."
+   },
+   "group": "sun",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/soho/feed/",
+    "photojournalCategory": 2995
+   }
+  },
+  "ace": {
+   "horizonsId": -92,
+   "horizonsRange": {
+    "start": "2006-07-03",
+    "stop": "2026-12-21",
+    "note": "Concatenated weekly GSFC predictions. No trajectory before 2006. Horizons rolls this trajectory forward regularly."
+   },
+   "group": "spaceweather",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": 2618
+   }
+  },
+  "wind": {
+   "horizonsId": -8,
+   "horizonsRange": {
+    "start": "1994-11-01",
+    "stop": "2026-12-15",
+    "note": "Weekly GSFC predictions. Tracking through 2026-09-21, prediction after. Horizons rolls this trajectory forward regularly."
+   },
+   "group": "spaceweather",
+   "nasa": {
+    "newsFeed": null,
+    "photojournalCategory": 3195
+   }
+  },
+  "dscovr": {
+   "horizonsId": -78,
+   "horizonsRange": {
+    "start": "2015-02-11T23:50Z",
+    "stop": "2026-11-02",
+    "note": "Weekly tag-up solutions through 2026-10-11, short-term prediction for three weeks after. Horizons rolls this trajectory forward regularly."
+   },
+   "group": "spaceweather",
+   "nasa": {
+    "newsFeed": "https://www.nasa.gov/missions/dscovr/feed/",
+    "photojournalCategory": 3953
+   }
+  },
+  "imap": {
+   "horizonsId": -43,
+   "horizonsRange": {
+    "start": "2025-09-24T13:02Z",
+    "stop": "2026-11-09",
+    "note": "Merged trajectory with tracking through 2026-09-28, prediction after. Horizons rolls this trajectory forward regularly."
+   },
+   "group": "spaceweather",
+   "nasa": {
+    "newsFeed": "https://science.nasa.gov/blogs/imap/feed/",
+    "photojournalCategory": 3978
+   }
+  }
+ }
+}

@@ -1,0 +1,85 @@
+name: Live data
+
+# Fetches Astrotempo's live data and publishes it on this repository's Pages site
+# (https://limpidmaja.github.io/astrotempo-data/): the files under live/, and all of them with the NASA photos as
+# live.tar.gz for the site's daily build. Each run starts from the last published data, so a job that fails keeps
+# its last good file.
+on:
+  schedule:
+    # Satellites follow CelesTrak's 2-hour update cycle: every 4 hours, off the hour.
+    - cron: '17 */4 * * *'
+    # JPL small bodies, close approaches, NASA news and photos, and spacecraft: once a day, well before the site's
+    # daily build at 13:15 UTC.
+    - cron: '41 3 * * *'
+  workflow_dispatch:
+    inputs:
+      jobs:
+        description: 'Jobs to run (space separated)'
+        default: 'smallbodies neo satellites nasa spacecraft'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  issues: write
+
+concurrency:
+  group: data
+  cancel-in-progress: false
+
+env:
+  SITE: https://limpidmaja.github.io/astrotempo-data
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Restore the last published data
+        id: restore
+        run: |
+          if curl -fsSL "$SITE/live.tar.gz" -o last.tar.gz; then tar xzf last.tar.gz && echo "had=1" >> "$GITHUB_OUTPUT"; else mkdir -p live && echo "had=0" >> "$GITHUB_OUTPUT"; fi
+      - name: Pick jobs
+        id: pick
+        env:
+          SCHEDULE: ${{ github.event.schedule }}
+          INPUT: ${{ github.event.inputs.jobs }}
+          HAD: ${{ steps.restore.outputs.had }}
+        run: |
+          if [ -n "$INPUT" ]; then echo "jobs=$INPUT" >> "$GITHUB_OUTPUT";
+          elif [ "$HAD" != "1" ] || [ "$SCHEDULE" = "41 3 * * *" ]; then echo "jobs=smallbodies neo satellites nasa spacecraft" >> "$GITHUB_OUTPUT";
+          else echo "jobs=satellites" >> "$GITHUB_OUTPUT"; fi
+      - name: Fetch and validate
+        id: fetch
+        run: node scripts/fetch-live.mjs ${{ steps.pick.outputs.jobs }} --out=live
+      - name: Build the Pages site
+        # Runs even when one job failed: the other jobs' fresh files and the kept files are published.
+        if: always() && steps.pick.outcome == 'success'
+        run: |
+          mkdir -p site/live
+          cp live/*.json site/live/
+          tar czf site/live.tar.gz live
+          cp README.md site/README.md
+          printf '<!doctype html><meta charset="utf-8"><title>Astrotempo live data</title><p>Live data for <a href="https://astrotempo.com/">astrotempo.com</a>. Sources, licences and credits: <a href="https://github.com/LimpidMaja/astrotempo-data">README</a> and <a href="live/index.json">live/index.json</a>.</p>\n' > site/index.html
+          touch site/.nojekyll
+      - uses: actions/upload-pages-artifact@v5
+        if: always() && steps.pick.outcome == 'success'
+        with:
+          path: site
+          retention-days: 1
+      - id: deployment
+        if: always() && steps.pick.outcome == 'success'
+        uses: actions/deploy-pages@v5
+      - name: Open an issue when a job fails
+        if: failure() && steps.fetch.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "Data job failed: ${{ steps.pick.outputs.jobs }}" --body "A scheduled data job failed validation or could not reach its source. The last good data was kept. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
