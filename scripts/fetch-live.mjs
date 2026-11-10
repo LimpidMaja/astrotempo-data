@@ -275,14 +275,30 @@ const JOBS = {
     const day = (d) => d.toISOString().slice(0, 10);
     const today = new Date();
     today.setUTCHours(0, 0, 0, 0);
-    const horizons = async (params) => {
+    const table = async (params) => {
       const q = Object.entries(params).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
       const r = await getJson(`https://ssd.jpl.nasa.gov/api/horizons.api?format=json&${q}`);
       const text = r.result ?? '';
       const a = text.indexOf('$$SOE');
       const b = text.indexOf('$$EOE');
       if (a < 0 || b < 0) throw new Error(text.split('\n').find((l) => /No ephemeris|Cannot|error/i.test(l)) ?? 'no ephemeris');
-      return text.slice(a + 5, b).trim().split('\n').map((l) => l.split(',').map((x) => x.trim()));
+      return text.slice(a + 5, b).trim();
+    };
+    const horizons = async (params) => (await table(params)).split('\n').map((l) => l.split(',').map((x) => x.trim()));
+    // Vector tables are read in Horizons' plain text layout ("2461345.5 = A.D. ..." then " X =... Y =... Z =..."):
+    // since 10 November 2026 its CSV vector tables carry only the date columns, without X, Y and Z. The rows keep
+    // the CSV shape [JD, date, x, y, z] so the code below reads them the same way.
+    const NUM = '([-+]?\\d+\\.?\\d*(?:E[-+]?\\d+)?)';
+    const XYZ = new RegExp(`X\\s*=\\s*${NUM}\\s+Y\\s*=\\s*${NUM}\\s+Z\\s*=\\s*${NUM}`);
+    const vectors = async (params) => {
+      const rows = [];
+      for (const line of (await table(params)).split('\n')) {
+        const t = /^\s*(\d+\.\d+)\s*=/.exec(line);
+        if (t) rows.push([t[1], '']);
+        const m = XYZ.exec(line);
+        if (m && rows.length && rows.at(-1).length === 2) rows.at(-1).push(m[1], m[2], m[3]);
+      }
+      return rows;
     };
     const sexa = (h, m, sec) => Number(h.replace('-', '')) + Number(m) / 60 + Number(sec) / 3600;
     const data = {};
@@ -324,7 +340,7 @@ const JOBS = {
         };
         const lo = new Date(Math.max(today.getTime() - 365 * 864e5, Date.parse(sc.horizonsRange.start) + 864e5));
         const vec = await upTo(Math.min(today.getTime() + 365 * 864e5, Math.max(Date.parse(sc.horizonsRange.stop) - 864e5, today.getTime() + 30 * 864e5)), (end) =>
-          horizons({ COMMAND: `'${id}'`, MAKE_EPHEM: 'YES', EPHEM_TYPE: 'VECTORS', CENTER: "'500@10'", START_TIME: `'${day(lo)}'`, STOP_TIME: `'${day(new Date(end))}'`, STEP_SIZE: "'15 d'", VEC_TABLE: "'1'", OUT_UNITS: "'AU-D'", CSV_FORMAT: 'YES', OBJ_DATA: 'NO' }),
+          vectors({ COMMAND: `'${id}'`, MAKE_EPHEM: 'YES', EPHEM_TYPE: 'VECTORS', CENTER: "'500@10'", START_TIME: `'${day(lo)}'`, STOP_TIME: `'${day(new Date(end))}'`, STEP_SIZE: "'15 d'", VEC_TABLE: "'1'", OUT_UNITS: "'AU-D'", OBJ_DATA: 'NO' }),
         );
         // Rounded to 1e-8 au (about 1.5 km) and 1e-5 day: the browser loads this file for the 3D views.
         const round = (c) => [Math.round(Number(c[0]) * 1e5) / 1e5, ...[c[2], c[3], c[4]].map((v) => Math.round(Number(v) * 1e8) / 1e8)];
@@ -340,7 +356,7 @@ const JOBS = {
           const close = now.delta < 0.005 && sc.group !== 'moon';
           try {
             const g = await upTo(today.getTime() + (close ? 30 : 90) * 864e5, (end) =>
-              horizons({ COMMAND: `'${id}'`, MAKE_EPHEM: 'YES', EPHEM_TYPE: 'VECTORS', CENTER: "'500@399'", START_TIME: `'${day(new Date(today.getTime() - (close ? 2 : 5) * 864e5))}'`, STOP_TIME: `'${day(new Date(end))}'`, STEP_SIZE: close ? "'1 h'" : "'12 h'", VEC_TABLE: "'1'", OUT_UNITS: "'AU-D'", CSV_FORMAT: 'YES', OBJ_DATA: 'NO' }),
+              vectors({ COMMAND: `'${id}'`, MAKE_EPHEM: 'YES', EPHEM_TYPE: 'VECTORS', CENTER: "'500@399'", START_TIME: `'${day(new Date(today.getTime() - (close ? 2 : 5) * 864e5))}'`, STOP_TIME: `'${day(new Date(end))}'`, STEP_SIZE: close ? "'1 h'" : "'12 h'", VEC_TABLE: "'1'", OUT_UNITS: "'AU-D'", OBJ_DATA: 'NO' }),
             );
             geo = g.map((c) => [Math.round(Number(c[0]) * 1e5) / 1e5, ...[c[2], c[3], c[4]].map((v) => Math.round(Number(v) * 1e9) / 1e9)]).filter((p) => p.every(finite));
           } catch (e) {
